@@ -1,0 +1,78 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family: 'Quicksand', sans-serif;
+  background-color: #fffaf4;
+  color: #333;
+  line-height: 1.6;
+}
+header, section, footer {
+  padding: 2rem 1rem;
+  text-align: center;
+}
+h1, h2 {
+  margin-bottom: 1rem;
+}
+.hero {
+  background-color: #fef4e8;
+  padding: 2rem;
+}
+.hero-img {
+  width: 200px;
+  margin-bottom: 1rem;
+}
+.service-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+}
+.card {
+  background: #fff;
+  padding: 1rem;
+  border-radius: 12px;
+  width: 220px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.05);
+}
+.card img {
+  width: 80px;
+  margin-bottom: 0.5rem;
+}
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  margin: 1rem 0;
+}
+form input, form button {
+  padding: 0.8rem;
+  width: 250px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+form button {
+  background-color: #f4a261;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+.form-img {
+  margin-top: 1rem;
+  width: 180px;
+}
+.reviews img {
+  width: 100px;
+  margin-bottom: 1rem;
+}
+footer {
+  background-color: #fef4e8;
+  padding: 2rem;
+}
+footer img {
+  width: 150px;
+  margin-top: 1rem;
+}
