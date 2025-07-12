@@ -185,16 +185,23 @@ document.getElementById("catForm").addEventListener("submit", function (e) {
     return;
   }
 
-  alert("Котик успешно записан! Мяу :)");
-  modal.style.display = "none";
-  this.reset();
+  // Показать сообщение
+  const successMessage = document.getElementById('successMessage');
+  successMessage.style.display = 'block';
 
-  // Сброс ошибок
-  [catNameError, ownerNameError, phoneError].forEach((el) => {
-    el.textContent = "";
-    el.style.display = "none";
-  });
-  [catName, ownerName, phone].forEach((el) => el.classList.remove("invalid"));
+  // Скрыть модальное окно и очистить форму через 2.5 секунды
+  setTimeout(() => {
+    successMessage.style.display = 'none';
+    modal.style.display = 'none';
+    this.reset();
+
+    // Сброс ошибок
+    [catNameError, ownerNameError, phoneError].forEach((el) => {
+      el.textContent = "";
+      el.style.display = "none";
+    });
+    [catName, ownerName, phone].forEach((el) => el.classList.remove("invalid"));
+  }, 2500);
 });
 
 // Автоматическая смена отзывов
