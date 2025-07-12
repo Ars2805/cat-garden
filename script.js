@@ -49,26 +49,128 @@ ownerName.addEventListener("input", () => {
 });
 
 // Проверка телефона и автоформат
-phone.addEventListener("input", () => {
-  let digits = phone.value.replace(/\D/g, '');
+phone.addEventListener("input", onPhoneInput);
+phone.addEventListener("keydown", onPhoneKeyDown);
+phone.addEventListener("focus", onPhoneFocus);
+phone.addEventListener("blur", onPhoneBlur);
 
-  if (digits.startsWith('8')) digits = '7' + digits.slice(1);
-  if (!digits.startsWith('7')) digits = '7' + digits;
+let previousValue = "";
+let previousCursorPos = 0;
 
-  digits = digits.slice(0, 11); // максимум 11 цифр
+function onPhoneFocus(e) {
+  if (!e.target.value) {
+    e.target.value = "+7 (";
+    setCursorPosition(e.target, 4);
+    previousValue = e.target.value;
+    previousCursorPos = 4;
+  }
+}
 
-  phone.value = '+7' + digits.slice(1);
+function onPhoneInput(e) {
+  const input = e.target;
+  let rawValue = input.value;
+  let digits = rawValue.replace(/\D/g, "");
 
-  if (digits.length !== 11) {
+  if (!digits.startsWith("7")) {
+    digits = "7" + digits;
+  }
+  digits = digits.slice(0, 11);
+
+  const formatted = formatPhone(digits);
+
+  // Позиция курсора до изменений
+  let cursorPos = input.selectionStart;
+
+  // Защита от захода курсора в префикс
+  if (cursorPos < 4) {
+    cursorPos = 4;
+    setCursorPosition(input, cursorPos);
+    return; 
+  }
+
+  // Количество цифр до курсора в старом значении
+  let digitsBeforeCursor = 0;
+  for (let i = 0; i < cursorPos; i++) {
+    if (/\d/.test(rawValue[i])) digitsBeforeCursor++;
+  }
+
+  input.value = formatted;
+
+  let newCursorPos = 0;
+  let digitsCount = 0;
+  while (digitsCount < digitsBeforeCursor && newCursorPos < formatted.length) {
+    if (/\d/.test(formatted[newCursorPos])) digitsCount++;
+    newCursorPos++;
+  }
+
+  // Защита от выхода за пределы и захода в префикс
+  if (newCursorPos < 4) newCursorPos = 4;
+  if (newCursorPos > formatted.length) newCursorPos = formatted.length;
+
+  setCursorPosition(input, newCursorPos);
+
+  // Валидация
+  if (digits.length < 11) {
     phone.classList.add("invalid");
-    phoneError.textContent = "Введите 9 цифр после +7 (например: 9231234567)";
+    phoneError.textContent = "Введите полный номер";
     phoneError.style.display = "block";
   } else {
     phone.classList.remove("invalid");
     phoneError.textContent = "";
     phoneError.style.display = "none";
   }
-});
+
+  previousValue = formatted;
+  previousCursorPos = newCursorPos;
+}
+
+function onPhoneKeyDown(e) {
+  const input = e.target;
+  const prefixLength = 4;
+  const pos = input.selectionStart;
+
+  // Запретить удаление в префиксе
+  if ((e.key === "Backspace" && pos <= prefixLength) ||
+      (e.key === "Delete" && pos < prefixLength)) {
+    e.preventDefault();
+    return;
+  }
+
+  // Запретить перемещение курсора в префикс стрелкой влево
+  if (e.key === "ArrowLeft" && pos <= prefixLength) {
+    e.preventDefault();
+    setCursorPosition(input, prefixLength);
+    return;
+  }
+
+  previousCursorPos = pos;
+  previousValue = input.value;
+}
+
+function formatPhone(digits) {
+  let formatted = "+7 (";
+
+  if (digits.length > 1) formatted += digits.slice(1, 4);
+  if (digits.length >= 4) formatted += ") " + digits.slice(4, 7);
+  if (digits.length >= 7) formatted += "-" + digits.slice(7, 9);
+  if (digits.length >= 9) formatted += "-" + digits.slice(9, 11);
+
+  return formatted;
+}
+
+function setCursorPosition(el, pos) {
+  requestAnimationFrame(() => {
+    el.setSelectionRange(pos, pos);
+  });
+}
+
+function onPhoneBlur(e) {
+  if (e.target.value === "+7 (" || e.target.value === "+7") {
+    e.target.value = "";
+    previousValue = "";
+    previousCursorPos = 0;
+  }
+}
 
 // Финальная проверка перед отправкой
 document.getElementById("catForm").addEventListener("submit", function (e) {
