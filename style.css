@@ -3,44 +3,59 @@
   margin: 0;
   padding: 0;
 }
+
 body {
   font-family: 'Quicksand', sans-serif;
   background-color: #fffaf4;
   color: #333;
   line-height: 1.6;
 }
+
 header, section, footer {
   padding: 2rem 1rem;
   text-align: center;
 }
+
 h1, h2 {
   margin-bottom: 1rem;
 }
+
 .hero {
   background-color: #fef4e8;
   padding: 2rem;
 }
+
 .hero-img {
   width: 200px;
   margin-bottom: 1rem;
 }
+
 .service-list {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 1rem;
 }
+
 .card {
   background: #fff;
   padding: 1rem;
   border-radius: 12px;
   width: 220px;
   box-shadow: 0 0 10px rgba(0,0,0,0.05);
+  transition: 0.3s ease;
 }
+
 .card img {
   width: 80px;
   margin-bottom: 0.5rem;
 }
+
+.card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
 form {
   display: flex;
   flex-direction: column;
@@ -48,30 +63,118 @@ form {
   gap: 1rem;
   margin: 1rem 0;
 }
-form input, form button {
+
+form input,
+form button {
   padding: 0.8rem;
   width: 250px;
   border: 1px solid #ccc;
   border-radius: 8px;
 }
+
 form button {
   background-color: #f4a261;
   color: #fff;
   border: none;
   cursor: pointer;
+  transition: background 0.3s ease;
 }
+
 .form-img {
   margin-top: 1rem;
   width: 180px;
 }
-.reviews img {
-  width: 100px;
-  margin-bottom: 1rem;
+
+.form-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 1rem;
 }
+
+.open-modal {
+  margin-top: 1rem;
+  padding: 0.8rem 1.2rem;
+  width: 220px;
+  font-size: 1rem;
+  background-color: #f4a261;
+  color: white;
+  border: 1px solid transparent; /* ← чтобы избежать смещения */
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+.open-modal:hover {
+  background-color: #fef4e8;
+  color: #333;
+  border-color: #f4a261;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+.modal-content {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 400px;
+  text-align: center;
+  position: relative;
+}
+
+.close-modal {
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.reviews img {
+  width: 80px;
+  height: auto;
+  object-fit: contain;
+  margin-bottom: 1rem;
+  border: none;
+  border-radius: 0;
+}
+
+.review-slider {
+  position: relative;
+  max-width: 400px;
+  margin: 2rem auto;
+}
+
+.review {
+  display: none;
+  text-align: center;
+  padding: 1.5rem;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.review.active {
+  display: block;
+}
+
 footer {
   background-color: #fef4e8;
   padding: 2rem;
 }
+
 footer img {
   width: 150px;
   margin-top: 1rem;

@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Сад для котиков</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700&display=swap" rel="stylesheet" />
 </head>
 <body>
   <header>
@@ -22,22 +22,22 @@
     <h2>Наши услуги</h2>
     <div class="service-list">
       <div class="card" data-aos="fade-up">
-        <img src="img/play.svg" alt="Игры">
+        <img src="img/play.svg" alt="Игры" />
         <h3>Игры</h3>
         <p>Игрушки, лазалки и веселые занятия</p>
       </div>
       <div class="card" data-aos="fade-up" data-aos-delay="100">
-        <img src="img/house.svg" alt="Домик">
+        <img src="img/house.svg" alt="Домик" />
         <h3>Домик</h3>
         <p>Уютные личные домики для каждого котика</p>
       </div>
       <div class="card" data-aos="fade-up" data-aos-delay="200">
-        <img src="img/food.svg" alt="Кормление">
+        <img src="img/food.svg" alt="Кормление" />
         <h3>Кормление</h3>
         <p>Свежая еда и вода по расписанию</p>
       </div>
       <div class="card" data-aos="fade-up" data-aos-delay="300">
-        <img src="img/love.svg" alt="Забота">
+        <img src="img/love.svg" alt="Забота" />
         <h3>Забота</h3>
         <p>Нежность, внимание и ласка</p>
       </div>
@@ -46,26 +46,58 @@
 
   <section class="form-section" id="form">
     <h2>Записать котика</h2>
-    <form id="catForm">
-      <input type="text" placeholder="Имя котика" required />
-      <input type="text" placeholder="Ваше имя" required />
-      <input type="tel" placeholder="Телефон" required />
-      <button type="submit">Записать</button>
-    </form>
-    <img src="img/wave-cat.svg" alt="Котик машет" class="form-img" />
+    <div class="form-wrapper">
+      <img src="img/wave-cat.svg" alt="Котик машет" class="form-img" />
+      <button class="open-modal">Записать</button>
+    </div>
   </section>
+
+  <div class="modal" id="modal">
+    <div class="modal-content">
+      <span class="close-modal">&times;</span>
+      <h3>Форма записи</h3>
+      <form id="catForm">
+        <input type="text" placeholder="Имя котика" required />
+        <input type="text" placeholder="Ваше имя" required />
+        <input type="tel" placeholder="Телефон" required />
+        <button type="submit">Записать</button>
+      </form>
+    </div>
+  </div>
 
   <section class="reviews" id="reviews">
     <h2>Отзывы</h2>
-    <div class="review" data-aos="fade-right">
-      <p>«Мурзик пришёл домой довольный и выспавшийся. Спасибо!»</p>
-      <img src="img/happy-cat.svg" alt="Довольный котик">
+    <div class="review-slider">
+      <div class="review active">
+        <img src="img/happy-cat.svg" alt="Котик" />
+        <p>«Мурзик пришёл домой довольный и выспавшийся. Спасибо!»</p>
+      </div>
+      <div class="review">
+        <img src="img/happy-cat.svg" alt="Котик" />
+        <p>«Очень заботливый персонал, спасибо от моего Принца!»</p>
+      </div>
+      <div class="review">
+        <img src="img/happy-cat.svg" alt="Котик" />
+        <p>«Лапочки, а не сотрудники! Моя кошка не хотела уходить)»</p>
+      </div>
+      <div class="review">
+        <img src="img/happy-cat.svg" alt="Котик" />
+        <p>«Оставляю котика уже не первый раз — всегда в восторге! Чисто, уютно, хорошо следят за животными»</p>
+      </div>
+      <div class="review">
+        <img src="img/happy-cat.svg" alt="Котик" />
+        <p>«Всё супер, получал фотоотчёт от сотрудников, оставлю кота ещё не один раз»</p>
+      </div>
+      <div class="review">
+        <img src="img/happy-cat.svg" alt="Котик" />
+        <p>«Мой кот непростой, часто требует внимания. В садике к нему нашли подход — теперь не боюсь его оставлять. Однозначно рекомендую!»</p>
+      </div>
     </div>
   </section>
 
   <footer>
     <p>&copy; 2025 Садик для котиков</p>
-    <img src="img/sunset.svg" alt="Котик уходит в закат">
+    <img src="img/sunset.svg" alt="Котик уходит в закат" />
   </footer>
 
   <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
