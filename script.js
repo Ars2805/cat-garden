@@ -215,3 +215,34 @@ function showNextReview() {
 }
 setInterval(showNextReview, 5000); 
 
+// Слайдер "Наши гости"
+const track = document.querySelector('.slider-track');
+const prevBtn = document.querySelector('.slider-btn.prev');
+const nextBtn = document.querySelector('.slider-btn.next');
+const container = document.querySelector('.slider-container');
+
+let currentIndex = 0;
+
+const updateSlider = () => {
+  const slideWidth = container.clientWidth;
+  track.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
+};
+
+nextBtn.addEventListener('click', () => {
+  const totalSlides = document.querySelectorAll('.guest').length;
+  if (currentIndex < totalSlides - 1) {
+    currentIndex++;
+    updateSlider();
+  }
+});
+
+prevBtn.addEventListener('click', () => {
+  if (currentIndex > 0) {
+    currentIndex--;
+    updateSlider();
+  }
+});
+
+window.addEventListener('resize', updateSlider);
+window.addEventListener('load', updateSlider);
+
