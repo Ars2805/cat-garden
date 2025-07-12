@@ -57,9 +57,15 @@
       <span class="close-modal">&times;</span>
       <h3>Форма записи</h3>
       <form id="catForm">
-        <input type="text" placeholder="Имя котика" required />
-        <input type="text" placeholder="Ваше имя" required />
-        <input type="tel" placeholder="Телефон" required />
+        <input type="text" id="catName" placeholder="Имя котика" required />
+        <span class="error-message" id="catNameError"></span>
+
+        <input type="text" id="ownerName" placeholder="Ваше имя" required />
+        <span class="error-message" id="ownerNameError"></span>
+
+        <input type="tel" id="phone" placeholder="Телефон" required />
+        <span class="error-message" id="phoneError"></span>
+
         <button type="submit">Записать</button>
       </form>
     </div>
