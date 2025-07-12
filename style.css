@@ -199,3 +199,69 @@ footer img {
   width: 150px;
   margin-top: 1rem;
 }
+
+@media (max-width: 600px) {
+  h1 {
+    font-size: 1.8rem;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+
+  p {
+    font-size: 1rem;
+  }
+
+  .hero-img {
+    width: 150px;
+  }
+
+  .service-list {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .card {
+    width: 90%;
+    max-width: 300px;
+  }
+
+  .form-wrapper {
+    padding: 0 1rem;
+  }
+
+  form input,
+  form button {
+    width: 100%;
+  }
+
+  .form-img {
+    width: 120px;
+  }
+
+  .modal-content {
+    width: 90%;
+    padding: 1.5rem;
+  }
+
+  .review-slider {
+    max-width: 90%;
+    height: auto;
+    min-height: 220px;
+  }
+
+  .review {
+    padding: 1rem;
+    font-size: 0.95rem;
+  }
+
+  .reviews img {
+    width: 60px;
+  }
+
+  .open-modal {
+    width: 100%;
+    max-width: 250px;
+  }
+}
